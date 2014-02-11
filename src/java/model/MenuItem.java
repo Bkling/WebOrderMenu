@@ -9,7 +9,6 @@ public class MenuItem {
     private int menuId;
     private String menuItem;
     private double itemPrice;
-    private int category;
     private String menuValue;
 
     public int getMenuId() {
@@ -36,14 +35,6 @@ public class MenuItem {
         this.itemPrice = itemPrice;
     }
 
-    public int getCategory() {
-        return category;
-    }
-
-    public void setCategory(int category) {
-        this.category = category;
-    }
-
     public String getMenuValue() {
         return menuValue;
     }
@@ -54,6 +45,6 @@ public class MenuItem {
 
     @Override
     public String toString() {
-        return "menuId=" + menuId + ", menuItem=" + menuItem + ", itemPrice=" + itemPrice + ", category=" + category + ", menuValue=" + menuValue;
+        return "menuId=" + menuId + ", menuItem=" + menuItem + ", itemPrice=" + itemPrice + ", menuValue=" + menuValue;
     }
 }

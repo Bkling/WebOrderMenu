@@ -20,24 +20,10 @@ public class MenuDAO {
     private static final String MENU_ID = "menu_id";
     private static final String MENU_ITEM = "menu_item";
     private static final String MENU_ITEM_PRICE = "menu_item_price";
-    private static final String CATEGORY = "category_id";
     private static final String MENU_VALUE = "menu_value";
 
     public MenuDAO(DBAccessor db) {
         this.db = db;
-    }
-
-    private void openLocalDbConnection() throws DataAccessException {
-        try {
-            // Each time you perform a new query you must re-open the connection
-            db.openConnection(DRIVER, URL, ADMIN, PASSWORD);
-        } catch (IllegalArgumentException ex) {
-            throw new DataAccessException(ex.getMessage(), ex);
-        } catch (ClassNotFoundException ex) {
-            throw new DataAccessException(ex.getMessage(), ex);
-        } catch (SQLException ex) {
-            throw new DataAccessException(ex.getMessage(), ex);
-        }
     }
 
     public List<MenuItem> getMenuChoices() throws RuntimeException {
@@ -57,8 +43,6 @@ public class MenuDAO {
                 item.setMenuItem(name);
                 Double price = Double.valueOf(record.get(MENU_ITEM_PRICE).toString());
                 item.setItemPrice(price);
-                int cat = Integer.valueOf(record.get(CATEGORY).toString());
-                item.setCategory(cat);
                 String value = String.valueOf(record.get(MENU_VALUE).toString());
                 item.setMenuValue(value);
                 items.add(item);
